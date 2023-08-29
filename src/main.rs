@@ -39,6 +39,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .app_data(app_data.clone())
             .service(actix_files::Files::new("/api/images", &public_dir))
+            .service(actix_files::Files::new("/", "./static").index_file("index.html"),) // Serve static files from "static" directory
             .configure(handler::config)
             .wrap(cors)
             .wrap(Logger::default())

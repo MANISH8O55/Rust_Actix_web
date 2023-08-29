@@ -1,0 +1,13 @@
+{
+    "googleClientId": "591965525481-kptb48q9dqooenpt8ierk1e9b2r4mekv.apps.googleusercontent.com",
+    "googleRedirectUri": "http://localhost:8000",
+    "googleClientSecret": "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",
+    "googleAuthUri": "https://accounts.google.com/o/oauth2/auth",
+    "googleTokenUri": "https://oauth2.googleapis.com/token",
+    "googleAuthProviderCertUrl": "https://www.googleapis.com/oauth2/v1/certs",
+    "githubClientId": "YOUR_GITHUB_CLIENT_ID",
+    "githubRedirectUri": "YOUR_GITHUB_REDIRECT_URI",
+    "githubAuthorizationEndpoint": "https://github.com/login/oauth/authorize",
+    "githubTokenEndpoint": "https://github.com/login/oauth/access_token",
+    "githubUserInfoEndpoint": "https://api.github.com/user"
+}

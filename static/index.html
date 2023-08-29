@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Actix web</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="title"><span>Login Form</span></div>
+            <form action="#">
+                <div class="row">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Email or Phone" required>
+                </div>
+                <div class="row">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <div class="pass"><a href="#">Forgot password?</a></div>
+                <div class="row button">
+                    <input type="submit" value="Login">
+                </div>
+                <div class="row button" id="googleLogin">
+                    <input type="button" value="Login with Google">
+                </div>
+                <div class="row button" id="githubLogin">
+                    <input type="button" value="Login with Github">
+                </div>
+                <!-- <div class="google">
+                    <img width="60" height="60" src="https://img.icons8.com/papercut/60/google-logo.png" alt="google-logo"/>
+                </div> -->
+                <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const githubLoginButton = document.getElementById('githubLogin');
+            const googleLoginButton = document.getElementById('googleLogin');
+
+            // Fetch the configuration from the JSON file
+            const response = await fetch('config.json');
+            const config = await response.json();
+
+            githubLoginButton.addEventListener('click', () => {
+                const authUrl = `${config.githubAuthorizationEndpoint}?client_id=${config.githubClientId}&redirect_uri=${config.githubRedirectUri}`;
+                window.location.href = authUrl;
+            });
+
+            googleLoginButton.addEventListener('click', () => {
+                const authUrl = `${config.googleAuthUri}?client_id=${config.googleClientId}&redirect_uri=${config.googleRedirectUri}&response_type=code&scope=openid profile email`;
+                window.location.href = authUrl;
+            });
+        });
+    </script>
+</body>
+
+</html>
